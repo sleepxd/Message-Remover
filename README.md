@@ -1,5 +1,5 @@
 # Message-Remover
-Deletes all messages sent by you in a discord server.
+Deletes messages
 
 # Requirements
 - Python 3
