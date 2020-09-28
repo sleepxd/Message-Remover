@@ -1,6 +1,6 @@
 import requests, threading
 
-#EDIT TOKEN
+#Edit token
 TOKEN = ''
 
 mode = input('[1] DM\n[2] Server\n')
@@ -8,7 +8,6 @@ uid = input('User ID to purge: ')
 headers = {'Authorization':TOKEN}
 
 class Deleter:
-
     def something(self, stuff):
         messages = []
         for block in stuff:
@@ -16,7 +15,6 @@ class Deleter:
                 if message['author']['id'] == uid:
                     messages.append('%s:%s' % (message['channel_id'], message['id']))
         self.something_else(messages)
-
     def something_else(self, messages):
         print('Deleting %s messages.' % (len(messages)))
         for message in messages:
@@ -26,14 +24,11 @@ class Deleter:
 
 obj = Deleter()
 if mode == '1':
-    
     channel_id = input('Channel ID: ')
     while True:
         r = requests.get('https://discordapp.com/api/v6/channels/%s/messages/search?author_id=%s' % (channel_id, uid), headers=headers)
         obj.something(r.json()['messages'])
-
 else:
-
     server = input('Server ID: ')
     while True:
         r = requests.get('https://discordapp.com/api/v6/guilds/%s/messages/search?author_id=%s&include_nsfw=true' % (server, uid), headers=headers)
