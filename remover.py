@@ -1,4 +1,4 @@
-import requests, threading
+import requests, time
 
 #Edit token
 TOKEN = ''
@@ -21,7 +21,7 @@ class Deleter:
             channel = message.split(':')[0]
             message_id = message.split(':')[-1]
             r = requests.delete('https://discordapp.com/api/v6/channels/%s/messages/%s' % (channel, message_id), headers=headers)
-
+            time.sleep(0.2)
 obj = Deleter()
 if mode == '1':
     channel_id = input('Channel ID: ')
